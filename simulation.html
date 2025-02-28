@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Simulation | Solar System Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">Solar<span>System</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="simulation.html" class="active">Simulation</a></li>
+                    <li><a href="planets.html">Planets</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="simulation-container">
+        <canvas id="solarSystem"></canvas>
+        
+        <div class="controls">
+            <div class="control-row">
+                <button id="speedDown">-</button>
+                <span id="speedDisplay">1x</span>
+                <button id="speedUp">+</button>
+                <button id="resetView">Reset View</button>
+            </div>
+            <div class="control-row">
+                <label for="dateSelector">Date:</label>
+                <input type="date" id="dateSelector">
+                <button id="setCurrentDate">Current</button>
+            </div>
+            <div id="currentDate"></div>
+        </div>
+        
+        <div class="planet-info" id="planetInfo">
+            <h3 id="planetName"></h3>
+            <p id="planetDescription"></p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="simulation.html">Simulation</a>
+                <a href="planets.html">Planets</a>
+                <a href="about.html">About</a>
+            </div>
+            <p class="copyright">&copy; 2025 Solar System Explorer. Built by Vlad Bacila.</p>
+        </div>
+    </footer>
+
+    <script src="js/simulation.js"></script>
+    <script>
+        // Combine the two simulation JS files
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for the simulation.js to load, then load the second part
+            const script = document.createElement('script');
+            script.src = 'js/simulation-part2.js';
+            script.onload = function() {
+                // Initialize the simulation after both scripts are loaded
+                if (typeof initSimulation === 'function') {
+                    initSimulation();
+                } else if (window.SolarSystem && typeof window.SolarSystem.initSimulation === 'function') {
+                    window.SolarSystem.initSimulation();
+                }
+            };
+            document.body.appendChild(script);
+        });
+    </script>
+</body>
+</html>
