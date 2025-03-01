@@ -190,15 +190,14 @@ canvas {
 /* Simulation Controls */
 .controls {
     position: absolute;
-    top: 10px;
+    top: 80px; /* Increase this value from what was likely 10px */
     left: 10px;
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 15px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    z-index: 100;
+    gap: 8px;
 }
 
 .control-row {
